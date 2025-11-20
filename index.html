@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bright Minds - Mental Health for Kids</title>
+    <meta name="description" content="A friendly website helping children aged 8-13 understand feelings, stay calm, and learn about mental health in simple terms.">
+    <meta name="keywords" content="children mental health, kids emotions, feelings for kids, mental health awareness, child wellbeing">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            transition: background 0.35s ease, color 0.35s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #06b6d4;
+        }
+
+        /* Page Section */
+        .page-section {
+            display: none;
+            padding: 3rem 0;
+            min-height: 80vh;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .highlight {
+            color: #06b6d4;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #06b6d4;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0891b2;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2rem;
+        }
+
+        .icon-primary {
+            background: rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+        }
+
+        .icon-accent {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .icon-secondary {
+            background: rgba(168, 85, 247, 0.1);
+            color: #a855f7;
+        }
+
+        .card h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .card p {
+            text-align: center;
+            color: #6b7280;
+        }
+
+        /* Page Headers */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+
+        /* Activity Cards */
+        .activity-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border: 2px solid transparent;
+        }
+
+        .activity-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .activity-card h2 {
+            font-size: 1.875rem;
+        }
+
+        .activity-steps {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .activity-steps li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .activity-steps .step-number {
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        /* Resource Links */
+        .resource-section {
+            margin-bottom: 3rem;
+        }
+
+        .resource-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .resource-list a {
+            color: #06b6d4;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+
+        .resource-list p {
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        /* Help Page */
+        .help-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .help-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .trust-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .trust-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .emergency-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .emergency-box h3 {
+            color: #dc2626;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-box p {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(245, 158, 11, 0.1));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .callout h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .callout p {
+            font-size: 1.125rem;
+            color: #4b5563;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: #6b7280;
+        }
+
+        .comparison-list li::before {
+            content: "•";
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            transition: background 0.35s ease, color 0.35s ease;
+        }
+
+        footer p {
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
+
+        /* ---------- Journal / Chat UI styles ---------- */
+        .journal-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 980px) {
+            .journal-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+            min-height: 420px;
+            transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .messages {
+            overflow-y: auto;
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .msg.user {
+            align-self: flex-end;
+            background: #06b6d4;
+            color: white;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .msg.bot {
+            align-self: flex-start;
+            background: #f3f4f6;
+            color: #1a1a1a;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .chat-controls textarea {
+            flex: 1;
+            resize: none;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            font-size: 1rem;
+            min-height: 56px;
+            transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar .card {
+            padding: 1rem;
+        }
+
+        .entry-list {
+            max-height: 60vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .entry {
+            background: #fff;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            font-size: 0.95rem;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .small {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* link-pill */
+        .link-pill {
+            display: inline-block;
+            padding: 0.35rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(6,182,212,0.12);
+            background: linear-gradient(180deg, #ffffff, #f8feff);
+            margin-right: 0.4rem;
+            margin-top: 0.3rem;
+            font-weight: 700;
+            color: #075b66;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(6,182,212,0.06);
+            font-size: 0.95rem;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .link-pill.external { background: linear-gradient(180deg,#fff7ed,#fffbf0); color:#7a4300; border:1px solid rgba(245,158,11,0.12); }
+        .link-pill.small { padding:0.25rem 0.45rem; font-size:0.85rem; }
+
+        /* ============ DARK MODE ============ */
+        body.dark {
+            background: #0b0c0d;
+            color: #e6eef0;
+        }
+
+        body.dark nav {
+            background: #111214;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        }
+
+        body.dark .logo { color: #67e6f2; }
+
+        body.dark .nav-links a { color: #c8d6d9; }
+        body.dark .nav-links a.active { color: #67e6f2; }
+
+        body.dark .card,
+        body.dark .activity-card,
+        body.dark .callout,
+        body.dark .help-section,
+        body.dark .resource-list li,
+        body.dark .comparison-card,
+        body.dark .chat-card,
+        body.dark .entry,
+        body.dark .trust-item {
+            background: #141619;
+            color: #e6eef0;
+            border-color: #222426 !important;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+        }
+
+        body.dark .card p,
+        body.dark .callout p,
+        body.dark .small,
+        body.dark .resource-list p,
+        body.dark .comparison-list li {
+            color: #cbd7db;
+        }
+
+        body.dark h1,
+        body.dark h2,
+body.dark h3,
+body.dark .page-header h1,
+body.dark .page-header p,
+body.dark .help-section h2,
+body.dark .page-header,
+body.dark .help-section {
+    color: #e6eef0 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-text-fill-color: #e6eef0 !important; /* Safari / Chrome */
+    text-shadow: none !important;
+}
+
+/* If a large heading has inline style or is inside an element with opacity, force it readable */
+body.dark .page-section[style],
+body.dark .page-header[style],
+body.dark .help-section[style] {
+    color: #e6eef0 !important;
+    opacity: 1 !important;
+}
+
+/* Some browsers apply reduced contrast using mix-blend or opacity on parents — remove that for headings */
+body.dark .page-header, body.dark .help-section {
+    mix-blend-mode: normal !important;
+    background-blend-mode: normal !important;
+}
+
+/* final fallback: if any heading still ends up with inline color that is dark, this rule forces it */
+body.dark [style*="font-size: 3rem"] { color: #e6eef0 !important; opacity:1 !important; }
+
+        body.dark .msg.bot {
+            background: #1b1d1f;
+            color: #e6eef0;
+            box-shadow: none;
+        }
+
+        body.dark .msg.user {
+            background: #06b6d4;
+            color: #ffffff;
+        }
+
+        body.dark textarea,
+        body.dark input,
+        body.dark .chat-controls textarea {
+            background: #0f1112;
+            color: #e6eef0;
+            border: 1px solid #222426;
+        }
+
+        body.dark footer {
+            background: #000;
+            color: #bfc9cc;
+        }
+
+        body.dark .link-pill {
+            background: #0f1314;
+            border-color: #233134;
+            color: #67e6f2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+        }
+
+        body.dark .link-pill.external {
+            background: #24160b;
+            border-color: #4b2b0a;
+            color: #ffd08a;
+        }
+
+        body.dark .btn-primary { background: #0891b2; }
+        body.dark .btn-secondary { background: #d97706; }
+        /* smooth transitions for elements */
+        .card, .activity-card, .callout, .chat-card, .entry, textarea, footer {
+            transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        /* --- Dark mode color fixes (target common inline styles) --- */
+        /* ensure base text is light */
+        body.dark {
+          color: #e6eef0;
+        }
+
+        /* override inline dark colors like color: #1a1a1a; */
+        body.dark [style*="color: #1a1a1a"],
+        body.dark [style*="color:#1a1a1a"],
+        body.dark [style*="color: rgb(26, 26, 26)"],
+        body.dark [style*="color: rgb(26,26,26)"] {
+          color: #e6eef0 !important;
+        }
+
+        /* make your blue highlight readable in dark mode */
+        body.dark [style*="color: #06b6d4"],
+        body.dark [style*="color:#06b6d4"] {
+          color: #67e6f2 !important;
+        }
+
+        /* purple accents */
+        body.dark [style*="color: #a855f7"],
+        body.dark [style*="color:#a855f7"] {
+          color: #caa7ff !important;
+        }
+
+        /* orange accents */
+        body.dark [style*="color: #f59e0b"],
+        body.dark [style*="color:#f59e0b"] {
+          color: #ffd08a !important;
+        }
+
+        /* specific elements that could still be dark because of inline rules */
+        body.dark .card h3,
+        body.dark .card p,
+        body.dark .page-header h1,
+        body.dark .activity-card h2,
+        body.dark .comparison-card p,
+        body.dark .comparison-list li,
+        body.dark .callout h3,
+        body.dark .callout p,
+        body.dark .emergency-box h3,
+        body.dark .emergency-box p,
+        body.dark .resource-section h2,
+        body.dark .small {
+          color: #e6eef0 !important;
+        }
+
+        /* Textareas / inputs + placeholder color */
+        body.dark textarea,
+        body.dark input,
+        body.dark textarea::placeholder,
+        body.dark input::placeholder {
+          color: #e6eef0;
+          opacity: 0.9;
+        }
+
+        /* messages inside chat (double safety) */
+        body.dark .msg.bot { color: #e6eef0 !important; }
+        body.dark .msg.user { color: #ffffff !important; }
+
+        /* links: keep them bright and readable */
+        body.dark a,
+        body.dark .resource-list a {
+          color: #67e6f2 !important;
+        }
+
+        /* keep subtle elements readable */
+        body.dark .small,
+        body.dark .controls-row .btn-ghost {
+          color: #cbd7db !important;
+        }
+
+        /* If any element still has inline black text, this fallback will make it visible
+           (last resort — only for elements with inline style attribute). */
+        body.dark *[data-bm-original-color] {
+          /* elements that have been processed will keep inherited color */
+          color: inherit !important;
+        }
+
+        /* ===== Additional, targeted fixes for problem areas ===== */
+
+        /* Emergency box: in dark mode make it high contrast (dark red background + white text) */
+        body.dark .emergency-box {
+            background: linear-gradient(180deg,#4b0f0f,#2b0606);
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+        body.dark .emergency-box h3,
+        body.dark .emergency-box p {
+            color: #ffffff !important;
+        }
+
+        /* Special: card that uses inline background #fffbeb (Important Safety Note)
+           make a dark-friendly replacement so text remains readable */
+        body.dark .card[style*="background: #fffbeb"],
+        body.dark .card[style*="background:#fffbeb"] {
+            background: linear-gradient(180deg,#3b2a14,#24180a);
+            border-color: #9a5b08 !important;
+            color: #fff;
+        }
+        body.dark .card[style*="background: #fffbeb"] h3,
+        body.dark .card[style*="background: #fffbeb"] p,
+        body.dark .card[style*="background:#fffbeb"] *[style] {
+            color: inherit !important;
+        }
+
+        /* ensure trust-item readable in dark */
+        body.dark .trust-item {
+            background: linear-gradient(180deg,#101214,#151718);
+            border: 1px solid rgba(255,255,255,0.03);
+            color: #e6eef0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="logo">🐼 Bright Minds</div>
+                <!-- Dark mode toggle -->
+                <button id="darkToggle" class="btn btn-secondary" style="padding:0.5rem 0.9rem; font-size:0.95rem;">🌙 Dark Mode</button>
+            </div>
+
+            <ul class="nav-links">
+                <li><a onclick="showPage('home', this)" class="nav-link active">Home</a></li>
+                <li><a onclick="showPage('about', this)" class="nav-link">About</a></li>
+                <li><a onclick="showPage('activities', this)" class="nav-link">Activities</a></li>
+                <li><a onclick="showPage('resources', this)" class="nav-link">Resources</a></li>
+                <li><a onclick="showPage('help', this)" class="nav-link">Help</a></li>
+                <li><a onclick="showPage('journal', this)" class="nav-link">Journal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+        <div class="container">
+            <div class="hero">
+                <div>
+                    <h1>
+                        Welcome to<br>
+                        <span class="highlight">Bright Minds!</span>
+                    </h1>
+                    <p>
+                        Hi! This website is here to help children understand feelings, how to stay happy, calm, and strong. 
+                        Everyone has feelings… and mental health is about taking care of our mind just like we take care of our body.
+                    </p>
+                    <div class="btn-group">
+                        <a onclick="showPage('about', this)" class="btn btn-primary">
+                            Learn about feelings →
+                        </a>
+                        <a onclick="showPage('activities', this)" class="btn btn-primary">
+                            Try simple activities →
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div style="font-size: 200px; line-height: 1;">🐼</div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon icon-primary">❤️</div>
+                    <h3>Understand Feelings</h3>
+                    <p>Learn what different emotions mean and why we feel them</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon icon-accent">✨</div>
+                    <h3>Stay Calm</h3>
+                    <p>Try fun activities that help you feel peaceful and relaxed</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon icon-secondary">🤝</div>
+                    <h3>Get Help</h3>
+                    <p>Know when and how to talk to someone you trust</p>
+                </div>
+            </div>
+
+            <div class="callout" style="margin-top: 3rem;">
+                <h3>Ready to Learn More?</h3>
+                <p>Explore our pages to discover how your mind works and learn ways to feel your best every day!</p>
+                <div class="btn-group" style="justify-content: center; margin-top: 1.5rem;">
+                    <a onclick="showPage('about', this)" class="btn btn-primary">Start Learning →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <h1>What Is Mental Health?</h1>
+                <p>Let's learn about our amazing minds!</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <div style="display: flex; align-items: start; gap: 1rem;">
+                    <div class="card-icon icon-primary" style="margin: 0;">🧠</div>
+                    <div>
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">What is Mental Health</h2>
+                        <p style="font-size: 1.125rem; line-height: 1.8; color: #1a1a1a; text-align: left;">
+                            Mental health is about how your mind feels, thinks, and deals with things every day. 
+                            It includes your emotions, like feeling happy, sad, worried, or excited, and how you handle problems. 
+                            When your mental health is good, you can stay calm, focus in school, play with friends, and enjoy the activities you love. 
+                            Everyone has mental health, just like we all have physical health. 
+                            Taking care of it by talking about your feelings, resting, playing, and asking for help when you feel upset helps your mind stay strong, healthy, and happy.
+                        </p>
+                        <p style="font-size: 1.5rem; font-weight: 600; color: #06b6d4; margin-top: 1rem; text-align: left;">
+                            There is hope, even when your brain tells you there isn't.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(168, 85, 247, 0.2));">
+                <div style="display: flex; align-items: start; gap: 1rem; text-align: left;">
+                    <div style="font-size: 2rem;">❤️</div>
+                    <div>
+                        <h3 style="text-align: left;">Important Note For Your Kids</h3>
+                        <p style="text-align: left;">
+                            It's important to remember that everyone has feelings, and it's totally okay to talk about them.
+                            If you ever feel sad, scared, or worried, telling a trusted adult can help you feel better. 
+                            Your feelings matter, and taking care of your mind is just as important as taking care of your body.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 3rem 0;">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Feelings vs Problems</h2>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <div class="comparison-header">
+                            <div style="font-size: 2rem;">❤️</div>
+                            <h3 style="color: #06b6d4;">Feelings</h3>
+                        </div>
+                        <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                            Feelings are emotions that come and go, just like clouds moving in the sky. You might feel excited in the morning, annoyed at lunch, and happy again later; that's completely normal! Feelings change because our minds react to what happens around us.
+                        </p>
+                        <ul class="comparison-list">
+                            <li style="color: #06b6d4;">Change many times during the day</li>
+                            <li style="color: #06b6d4;">Can be strong or small, and both are okay</li>
+                            <li style="color: #06b6d4;">Come naturally and don't stay forever</li>
+                            <li style="color: #06b6d4;">Help us understand ourselves and others</li>
+                            <li style="color: #06b6d4;">Are part of growing up and being human</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <div class="comparison-header">
+                            <div style="font-size: 2rem;">⚠️</div>
+                            <h3 style="color: #a855f7;">Problems</h3>
+                        </div>
+                        <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                            Problems are different from regular feelings. They stick around for a long time and make everyday activities, like school, play, or sleep, harder than usual. When a feeling doesn’t fade away for days or weeks, it becomes a problem, and you don't have to deal with it alone.
+                        </p>
+                        <ul class="comparison-list">
+                            <li style="color: #a855f7;">Last for weeks or keep coming back</li>
+                            <li style="color: #a855f7;">Make normal activities feel difficult</li>
+                            <li style="color: #a855f7;">Can make you very tired, worried, or sad</li>
+                            <li style="color: #a855f7;">Don't go away even when good things happen</li>
+                            <li style="color: #a855f7;">Mean it's time to talk to a trusted adult for help</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">👥</div>
+                <p style="font-size: 1.25rem; font-weight: 600;">
+                    Remember: Your childs feelings are valid, and they should not be alone. 
+                    Talking about how they feel makes them brave! 💙
+                </p>
+            </div>
+            <div class="btn-group" style="justify-content: center; margin-top: 1.5rem;">
+                <a onclick="showPage('home', this)" class="btn btn-primary">
+                    Go Back →
+                </a>
+                <a onclick="showPage('activities', this)" class="btn btn-primary">
+                    Try simple activities →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Page -->
+    <section id="activities" class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✨</div>
+                <h1>Try These Fun Calm Activities</h1>
+                <p>When you need to feel calm, peaceful, or just take a break!</p>
+            </div>
+
+            <div id="activity-grounding" class="activity-card" style="border-color: rgba(6, 182, 212, 0.3);">
+                <div class="activity-header">
+                    <div class="activity-icon icon-primary">👀</div>
+                    <h2>5-4-3-2-1 Grounding Game</h2>
+                </div>
+                <p style="font-size: 1.125rem; font-weight: 500; margin-bottom: 1rem;">A quick grounding exercise to bring you back to the present by using your five senses.</p>
+                <ul class="activity-steps">
+                    <li><span class="step-number">1.</span> <span><strong>5</strong> things you can SEE — look around and name five things out loud.</span></li>
+                    <li><span class="step-number">2.</span> <span><strong>4</strong> things you can TOUCH — notice textures: your clothes, a chair, your hair.</span></li>
+                    <li><span class="step-number">3.</span> <span><strong>3</strong> things you can HEAR — list three sounds nearby.</span></li>
+                    <li><span class="step-number">4.</span> <span><strong>2</strong> things you can SMELL — sniff the air, a snack, or your shirt.</span></li>
+                    <li><span class="step-number">5.</span> <span><strong>1</strong> thing you can TASTE — a sip of water, a mint, or just notice your mouth.</span></li>
+                </ul>
+                <p class="small" style="margin-top:0.5rem;">This grounding method is used to reduce anxiety and help you focus on now. Try pairing it with slow breathing for extra calm.</p>
+            </div>
+
+            <div id="activity-balloon" class="activity-card" style="border-color: rgba(245, 158, 11, 0.3);">
+                <div class="activity-header">
+                    <div class="activity-icon icon-accent">💨</div>
+                    <h2>Balloon (Belly) Breathing</h2>
+                </div>
+                <p style="font-size: 1.125rem; font-weight: 500; margin-bottom: 1rem;">A gentle breathing exercise that helps your body relax — imagine your tummy is a balloon.</p>
+                <ul class="activity-steps">
+                    <li><span class="step-number">1.</span> <span>Sit or lie down comfortably and place your hands on your tummy.</span></li>
+                    <li><span class="step-number">2.</span> <span>Breathe in slowly through your nose — feel your tummy rise like a balloon filling with air.</span></li>
+                    <li><span class="step-number">3.</span> <span>Hold for 2–3 seconds.</span></li>
+                    <li><span class="step-number">4.</span> <span>Blow the air out slowly through your mouth — feel the balloon shrink.</span></li>
+                    <li><span class="step-number">5.</span> <span>Repeat 5 times. Try counting: in (1-2-3), hold (1-2), out (1-2-3-4).</span></li>
+                </ul>
+                <p class="small" style="margin-top:0.5rem;">Balloon breathing can help when you feel upset, worried, or tense — it calms your body and mind.</p>
+            </div>
+
+            <div id="activity-journal" class="activity-card" style="border-color: rgba(168, 85, 247, 0.3);">
+                <div class="activity-header">
+                    <div class="activity-icon icon-secondary">📖</div>
+                    <h2>Emotion Journal</h2>
+                </div>
+                <p style="font-size: 1.125rem; font-weight: 500; margin-bottom: 1rem;">Writing or drawing helps you name feelings and spot patterns over time.</p>
+                <ul class="activity-steps">
+                    <li><span class="step-number">1.</span> <span>List 3 feelings you had today and what happened before each one.</span></li>
+                    <li><span class="step-number">2.</span> <span>Draw a small picture of your day or the strongest moment.</span></li>
+                    <li><span class="step-number">3.</span> <span>Write one thing that made you feel better (even a little).</span></li>
+                </ul>
+                <p class="small" style="margin-top:0.5rem;">Journalling helps you remember what works — you can save entries in the Journal page too.</p>
+            </div>
+
+            <div class="callout">
+                <h3>💭 Remember: They do not need to fix their feelings.</h3>
+                <p>
+                    You just need to understand them and know that they will pass. 
+                    These activities help them feel calm while their feelings move through them.
+                </p>
+            </div>
+
+            <div class="card" style="text-align: center; margin-top: 2rem;">
+                <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Which activity will you make them try first? 🌟</h3>
+                <p style="font-size: 1.125rem;">
+                    Pick one and give it a try right now! You can do these activities anytime, 
+                    anywhere - at home, at school, or with friends.
+                </p>
+            </div>
+            <div class="btn-group" style="justify-content: center; margin-top: 1.5rem;">
+                <a onclick="showPage('home', this)" class="btn btn-primary">
+                    Go Back →
+                </a>
+                <a onclick="showPage('resources', this)" class="btn btn-primary">
+                    Check out Resources →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Page -->
+    <section id="resources" class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📚</div>
+                <h1>Helpful Websites and Videos</h1>
+                <p>Trusted resources for kids and families</p>
+            </div>
+
+            <div class="resource-section">
+                <h2>📱 Websites</h2>
+                <ul class="resource-list">
+                    <li>
+                        <a href="https://www.childlineindia.org" target="_blank">Childline India</a>
+                        <p>A helpline and website for children in India. If you need help, you can call 1098.</p>
+                    </li>
+                    <li>
+                        <a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response" target="_blank">WHO Mental Health Information</a>
+                        <p>Learn more about mental health from the World Health Organization.</p>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/results?search_query=mindfulness+for+children" target="_blank">Mindful Kids Videos (YouTube)</a>
+                        <p>Search YouTube for "Mindfulness for Children" to find helpful videos.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>📺 Video Topics to Search</h2>
+                <ul class="resource-list">
+                    <li>
+                        <strong>🧘‍♀️ Mindfulness for Kids</strong>
+                        <p>Videos that teach breathing exercises and staying calm</p>
+                    </li>
+                    <li>
+                        <strong>😊 Understanding Emotions</strong>
+                        <p>Cartoons and stories about different feelings</p>
+                    </li>
+                    <li>
+                        <strong>🌟 Positive Thinking for Children</strong>
+                        <p>Fun ways to think happy thoughts</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>🎮 Games to play</h2>
+                <ul class="resource-list">
+                    <li>
+                        <a href="https://mentalhealthdeltadivision.com/interactive-games/" target="_blank">Mental Health Delta Division</a>
+                        <p>A website with tons of games about any mental health issue</p>
+                    </li>
+                    <li>
+                        <a href="https://kidshelpline.com.au/games/thinking-brain" target="_blank">The thinking brain game</a>
+                        <p>A fun way to reduce your anxiety which teaches you the causes of it too.</p>
+                    </li>
+                    <li>
+                        <a href="https://mentalhealthcenter.com/control-your-emotions-top-5-stress-relief-games/" target="_blank">Stress Relief Games</a>
+                        <p>The 11 best stress relief games which are games on the play and app store</p>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="resource-section">
+                <h2>📖 Recommended Books</h2>
+                <ul class="resource-list">
+                    <li>
+                        <strong>"A Little SPOT of Feelings" Series</strong>
+                        <p>Books about different feelings like anger, anxiety, happiness, and more</p>
+                    </li>
+                    <li>
+                        <strong>"The Boy, The Mole, The Fox and The Horse"</strong>
+                        <p>A beautiful story about friendship, kindness, and hope</p>
+                    </li>
+                    <li>
+                        <strong>"The Invisible String"</strong>
+                        <p>A story about staying connected to people you love</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-section">
+                <h2>👩🏼‍⚕️ Best Mental Health Therapist</h2>
+                <ul class="resource-list">
+                    <li>
+                        <a href="https://skooc.com/?gad_campaignid=13384306795&gad_source=1" target="_blank">Counselling For Teens - Best Psychologist & Therapists</a>
+                        <p>Therapists to talk to when you feel down</p>
+                    </li>
+                    <li>
+                        <a href="https://docvita.com/get-started-with-therapy?" target="_blank">DocVita | Online Therapy</a>
+                        <p>Therapists to talk to when you feel down</p>
+                    </li>
+                    <li>
+                        <a href="https://www.amahahealth.com/?source=topnav&ispm=true" target="_blank">India's Best Therapists</a>
+                        <p>Best therapists to talk to all over india</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="callout">
+                <h3>💡 Ask Your Parents or Teachers</h3>
+                <p>
+                    These resources are great, but remember to always check with a parent, teacher, or another trusted adult before you watch any videos or visit any websites online. 
+                    They can help make sure everything is safe, appropriate for your age, and useful for your learning.
+                </p>
+            </div>
+            <div class="btn-group" style="justify-content: center; margin-top: 1.5rem;">
+                <a onclick="showPage('home', this)" class="btn btn-primary">
+                    Go Back →
+                </a>
+                <a onclick="showPage('help', this)" class="btn btn-primary">
+                    Seeking Help? →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journal Page (NEW) -->
+    <section id="journal" class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+                <h1>Feelings Journal & Chat</h1>
+                <p>Write or talk about how you feel. 
+                   The chatbot will listen and give kind, helpful replies. You can save entries to your device.</p>
+            </div>
+
+            <div class="journal-wrapper">
+                <!-- Chat area -->
+                <div class="chat-card">
+                    <div class="messages" id="messages" aria-live="polite"></div>
+
+                    <div class="chat-controls" style="padding-top: 0.5rem;">
+                        <textarea id="chat-input" placeholder="Type how you feel... (try: 'I'm sad' or 'I had a bad day')" maxlength="1000"></textarea>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            <button id="send-btn" class="btn btn-primary" style="min-width:120px;">Send</button>
+                            <button id="save-entry-btn" class="btn btn-secondary" style="min-width:120px;">Save Entry</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:0.5rem; display:flex; justify-content:space-between; align-items:center;">
+                        <div class="small">Tip: be honest — the bot's replies are friendly and supportive.</div>
+                        <div class="small">Local only — saved on this browser.</div>
+                    </div>
+                </div>
+
+                <!-- Sidebar: saved entries -->
+                <div class="sidebar">
+                    <div class="card">
+                        <h3 style="margin-bottom:0.5rem;">Saved Journal Entries</h3>
+                        <div class="small" style="margin-bottom:0.75rem;">Click an entry to view it in the chat. Use the buttons to export or clear.</div>
+                        <div class="entry-list" id="entry-list"></div>
+
+                        <div style="margin-top:0.75rem;" class="controls-row">
+                            <button id="export-btn" class="btn-ghost">Export JSON</button>
+                            <button id="clear-btn" class="btn-ghost">Clear All</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom:0.5rem;">How the bot helps</h3>
+                        <p class="small">The chatbot is made to listen and respond kindly. It can suggest breathing tasks, remind you to tell an adult, and help you name feelings. It's not a doctor — if you're really struggling, talk to a trusted adult or call local helplines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Page -->
+    <section id="help" class="page-section">
+        <div class="container">
+            <div class="page-header">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🤝</div>
+                <h1>When You Need Help, Talk To Someone You Trust</h1>
+                <p>It's always okay to ask for help</p>
+            </div>
+
+            <div class="help-section">
+                <h2>If you ever feel worried, upset, confused or scared for a long time…</h2>
+                <p style="font-size: 1.25rem; color: #06b6d4; font-weight: 600; margin-bottom: 1.5rem;">
+                    You should tell a safe adult.
+                </p>
+
+                <h3 style="font-size: 1.5rem; margin: 1.5rem 0 1rem;">You can talk to:</h3>
+                <div class="trust-list">
+                    <div class="trust-item">👨‍👩‍👧 Parents</div>
+                    <div class="trust-item">👩‍🏫 Teachers</div>
+                    <div class="trust-item">🎓 School Counselor</div>
+                    <div class="trust-item">👨‍⚕️ Doctor</div>
+                    <div class="trust-item">👵 Grandparents</div>
+                    <div class="trust-item">🤗 Other Family Members</div>
+                </div>
+            </div>
+
+            <div class="emergency-box">
+                <h3>🚨 Emergency Help in India</h3>
+                <p>Dial 1098 - Childline Helpline</p>
+                <p style="font-weight: normal; margin-top: 0.5rem;">Free, confidential help 24 hours a day, 7 days a week</p>
+            </div>
+
+            <div class="callout" style="margin-top: 2rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">💙</div>
+                <h3>Remember: Asking for help is brave!</h3>
+                <p>
+                    Talking to someone you trust about your feelings is one of the bravest and smartest things you can do. It shows strength, not weakness. 
+                    Remember, you are never alone, there are people who truly care about you, want to support you, and will listen whenever you need them.
+                </p>
+            </div>
+
+            <div class="card" style="background: #fffbeb; border: 2px solid #f59e0b; margin-top: 2rem;">
+                <div style="display: flex; align-items: start; gap: 1rem; text-align: left;">
+                    <div style="font-size: 2rem;">⚠️</div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #1a1a1a; text-align: left;">Important Safety Note</h3>
+                        <p style="text-align: left; color: #4b5563;">
+                            This website gives support information, but it cannot replace professional help. 
+                            If you or someone you know needs immediate help, please contact a trusted adult 
+                            or call the Childline helpline at 1098.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group" style="justify-content: center; margin-top: 1.5rem;">
+                <a onclick="showPage('home', this)" class="btn btn-primary">
+                    Go Back →
+                </a>
+                <a onclick="showPage('journal', this)" class="btn btn-primary">
+                    Open Journal →
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bright Minds - Mental Health for Kids. Made with ❤️ for children everywhere.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">This website is for educational purposes and does not replace professional mental health support.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* Updated showPage to accept the clicked element reliably.
+           We changed onclicks to pass `this` so event.target is not needed.
+        */
+        function showPage(pageId, clickedEl) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected page
+            const page = document.getElementById(pageId);
+            if (page) page.classList.add('active');
+
+            // Add active class to clicked nav link if provided
+            if (clickedEl) {
+                // if the clickedEl is an <a>, set active on that. If it's a child (like a btn), find matching nav-link for pageId
+                if (clickedEl.classList && clickedEl.classList.contains('nav-link')) {
+                    clickedEl.classList.add('active');
+                } else {
+                    // find nav link that has the onclick with the same pageId
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        try {
+                            if (link.getAttribute('onclick') && link.getAttribute('onclick').includes("'" + pageId + "'")) {
+                                link.classList.add('active');
+                            }
+                        } catch (e) {}
+                    });
+                }
+            } else {
+                // fallback: set first nav link that points to pageId active
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    try {
+                        if (link.getAttribute('onclick') && link.getAttribute('onclick').includes("'" + pageId + "'")) {
+                            link.classList.add('active');
+                        }
+                    } catch (e) {}
+                });
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ===== Dark mode toggle + inline-style fixer logic ===== */
+        (function(){
+            const toggle = document.getElementById('darkToggle');
+            const LS_KEY = 'brightminds_darkmode';
+
+            // Scans and fixes inline color/background styles when dark mode is ON.
+            // Stores originals in data attributes so we can restore on light mode.
+            function applyInlineFixes(isDark) {
+                const all = document.querySelectorAll('[style]');
+                all.forEach(el => {
+                    // skip script/style tags
+                    if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+
+                    // store original style once
+                    if (!el.dataset.bmOriginalStyle) el.dataset.bmOriginalStyle = el.getAttribute('style') || '';
+
+                    const styleLower = (el.getAttribute('style') || '').toLowerCase();
+
+                    // Fix inline text colors that are dark (like #1a1a1a or rgb(26,...))
+                    if (isDark) {
+                        if (styleLower.includes('#1a1a1a') || styleLower.includes('rgb(26') || styleLower.includes('color: black') || styleLower.includes('color:#000')) {
+                            try {
+                                // store original individual color value
+                                if (!el.dataset.bmOriginalColor) {
+                                    const m = (el.getAttribute('style') || '').match(/color\s*:\s*([^;]+)/i);
+                                    el.dataset.bmOriginalColor = m ? m[1].trim() : '';
+                                }
+                                el.style.color = '#e6eef0';
+                                el.setAttribute('data-bm-original-color','1');
+                            } catch(e){}
+                        }
+
+                        // Fix inline backgrounds like #fffbeb (the pale safety card)
+                        if (styleLower.includes('#fffbeb') || styleLower.includes('background: #fffbeb') || styleLower.includes('background:#fffbeb')) {
+                            try {
+                                if (!el.dataset.bmOriginalBg) {
+                                    const m = (el.getAttribute('style') || '').match(/background\s*:\s*([^;]+)/i) || (el.getAttribute('style') || '').match(/background-color\s*:\s*([^;]+)/i);
+                                    el.dataset.bmOriginalBg = m ? m[1].trim() : '';
+                                }
+                                // set dark-friendly background and border
+                                el.style.background = 'linear-gradient(180deg,#3b2a14,#24180a)';
+                                el.style.borderColor = '#9a5b08';
+                                el.style.color = '#ffffff';
+                                el.setAttribute('data-bm-original-bg','1');
+                            } catch(e){}
+                        }
+
+                        // Also ensure headings with inline color: #06b6d4 are adjusted for contrast
+                        if (styleLower.includes('#06b6d4')) {
+                            try {
+                                el.style.color = '#67e6f2';
+                            } catch(e){}
+                        }
+
+                        // any other inline dark colors (rgb(26,26,26) etc) — fallback set to light
+                        if (/color\s*:\s*rgb\(\s*26\s*,\s*26\s*,\s*26\s*\)/i.test(styleLower)) {
+                            try { el.style.color = '#e6eef0'; } catch(e){}
+                        }
+                    } else {
+                        // Restore originals when turning light
+                        if (el.dataset.bmOriginalStyle) {
+                            // full restore for backgrounds/colors we changed
+                            if (el.dataset.bmOriginalBg) {
+                                if (el.dataset.bmOriginalBg) {
+                                    el.style.background = '';
+                                    el.style.borderColor = '';
+                                    el.style.color = '';
+                                }
+                                delete el.dataset.bmOriginalBg;
+                                el.removeAttribute('data-bm-original-bg');
+                            }
+                            if (el.dataset.bmOriginalColor) {
+                                // restore original color if known
+                                el.style.color = el.dataset.bmOriginalColor || '';
+                                delete el.dataset.bmOriginalColor;
+                            }
+                            if (el.dataset.bmOriginalColor || el.dataset.bmOriginalBg) {
+                                // nothing
+                            }
+                            // remove marker
+                            el.removeAttribute('data-bm-original-color');
+                        }
+                    }
+                });
+            }
+
+            function setDarkMode(isDark, save=true){
+                if (isDark) {
+                    document.body.classList.add('dark');
+                    toggle.textContent = '☀️ Light Mode';
+                } else {
+                    document.body.classList.remove('dark');
+                    toggle.textContent = '🌙 Dark Mode';
+                }
+                // apply inline style fixes AFTER a short delay so CSS has applied
+                setTimeout(()=> applyInlineFixes(isDark), 60);
+                if (save) localStorage.setItem(LS_KEY, isDark ? 'true' : 'false');
+            }
+
+            // Initialize: if user has a saved preference use it, otherwise follow system preference
+            const saved = localStorage.getItem(LS_KEY);
+            if (saved === 'true') setDarkMode(true, false);
+            else if (saved === 'false') setDarkMode(false, false);
+            else {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setDarkMode(prefersDark, false);
+            }
+
+            toggle.addEventListener('click', ()=>{
+                const isDark = document.body.classList.toggle('dark');
+                setDarkMode(isDark, true);
+            });
+
+            // respond to system changes if user hasn't explicitly set a preference
+            try {
+                const mql = window.matchMedia('(prefers-color-scheme: dark)');
+                mql.addEventListener?.('change', e => {
+                    const savedPref = localStorage.getItem(LS_KEY);
+                    if (savedPref === null) setDarkMode(e.matches, false);
+                });
+            } catch(e){}
+
+            // run a safety pass on DOMContentLoaded too
+            document.addEventListener('DOMContentLoaded', ()=> {
+                const isDark = document.body.classList.contains('dark');
+                setTimeout(()=> applyInlineFixes(isDark), 60);
+            });
+
+            // expose for debugging
+            window.__bm_applyInlineFixes = applyInlineFixes;
+        })();
+
+    /* ================= Journal / Bot logic ================= */
+    (function(){
+            const STORAGE_KEY = 'brightminds_journal_latest';
+            const messagesEl = document.getElementById('messages');
+            const inputEl = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('send-btn');
+            const saveBtn = document.getElementById('save-entry-btn');
+            const entryListEl = document.getElementById('entry-list');
+            const exportBtn = document.getElementById('export-btn');
+            const clearBtn = document.getElementById('clear-btn');
+
+            function loadEntries(){ try { const r = localStorage.getItem(STORAGE_KEY); return r? JSON.parse(r): []; } catch(e){ return []; } }
+            function saveEntries(entries){ localStorage.setItem(STORAGE_KEY, JSON.stringify(entries||[])); }
+
+            function escapeHtml(t){ return String(t).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
+            function truncate(s,n){ if(!s) return ''; return s.length>n? s.slice(0,n-1)+'…':s; }
+
+            function renderEntryList(){
+                const entries = loadEntries();
+                entryListEl.innerHTML = '';
+                if (!entries.length) {
+                    const e = document.createElement('div'); e.className='small'; e.textContent='No entries yet. Save a chat message to create one!';
+                    entryListEl.appendChild(e); return;
+                }
+                entries.slice().reverse().forEach(ent => {
+                    const d = document.createElement('div'); d.className='entry'; d.tabIndex=0;
+                    const date = new Date(ent.time);
+                    d.innerHTML = `<div style="font-weight:700;margin-bottom:6px;">${escapeHtml(ent.title||truncate(ent.text,40))}</div><div class="small">${date.toLocaleString()}</div>`;
+                    d.addEventListener('click', ()=>{ addUserMessage(ent.text); setTimeout(()=> generateBotReply(ent.text),350); });
+                    entryListEl.appendChild(d);
+                });
+            }
+
+            function addUserMessage(text){
+                const div = document.createElement('div'); div.className='msg user'; div.textContent = text; messagesEl.appendChild(div);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            function addBotMessage(content){
+                const div = document.createElement('div'); div.className='msg bot';
+                if (typeof content === 'string') div.textContent = content;
+                else if (content instanceof Node) div.appendChild(content);
+                else if (Array.isArray(content)) content.forEach(c => { if (typeof c === 'string') div.appendChild(document.createTextNode(c)); else if (c instanceof Node) div.appendChild(c); });
+                messagesEl.appendChild(div);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            function makeActivityLink(label, id){
+                const a = document.createElement('button');
+                a.className = 'link-pill';
+                a.type = 'button';
+                a.textContent = label;
+                a.addEventListener('click', ()=>{
+                    showPage('activities', a);
+                    setTimeout(()=> {
+                        const el = document.getElementById(id);
+                        if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+                        if (el) { el.style.boxShadow='0 12px 30px rgba(6,182,212,.12)'; setTimeout(()=>el.style.boxShadow='',1600); }
+                    }, 350);
+                });
+                return a;
+            }
+
+            function makeExternalLink(label, href){
+                const a = document.createElement('a');
+                a.className = 'link-pill external';
+                a.href = href;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = label;
+                return a;
+            }
+
+            // keyword lists
+            const keywords = {
+                sadness: ['sad','unhappy','depressed','lonely','cry','crying','down','miserable','blue','heartbroken','upset','hurt','gloomy','downcast','grief','teary','empty','hopeless','low','broken','lost','devastated'],
+                anger: ['angry','mad','annoyed','furious','upset','irritated','pissed','rage','frustrated','hate','heated','livid','snapped','temper','hostile','bothered','aggravated','resent','annoying'],
+                worry: ['worried','anxious','scared','afraid','nervous','panic','worry','stressed','overthinking','terrified','uneasy','tensed','fear','shaking','concerned','dread','pressure','uncertain','restless'],
+                happy: ['happy','good','great','excited','fun','ok','okay','glad','joy','joyful','awesome','amazing','nice','positive','cheerful','content','smiling','delighted','pleased','energetic'],
+                tired: ['tired','sleepy','exhausted','worn out','fatigued','drained','drowsy','spent','burnt out','sluggish','low energy','weary','knackered'],
+                alone: ['alone','left out','lonely','no one','isolated','abandoned','ignored','unwanted','by myself','on my own','nobody cares','feeling small','distant','disconnected'],
+                emergency: ['suicide','kill myself','hurt myself','unsafe','emergency','help me now','self-harm','end my life','i can’t do this anymore','want to die','cut myself','danger','immediate help']
+            };
+
+            function containsAny(t, arr){ return arr.some(k => t.includes(k)); }
+
+            function generateBotReply(userText){
+                const t = userText.toLowerCase();
+
+                // emergency handling
+                if (containsAny(t, keywords.emergency)) {
+                    const container = document.createElement('div');
+                    container.appendChild(document.createTextNode("If you are thinking about harming yourself or are in immediate danger, please tell a trusted adult or call emergency services right now."));
+                    const pills = document.createElement('div'); pills.style.marginTop='8px';
+                    pills.appendChild(makeExternalLink('Childline India (1098)', 'https://www.childlineindia.org'));
+                    pills.appendChild(makeExternalLink('Emergency — Call Local Services', 'https://www.who.int/'));
+                    addBotMessage([container, pills]);
+                    return;
+                }
+
+                // sadness
+                if (containsAny(t, keywords.sadness)) {
+                    addBotMessage("I'm sorry that you're feeling sad — that can feel really heavy. You're not alone.");
+                    const p = document.createElement('div'); p.style.marginTop='8px';
+                    p.appendChild(makeActivityLink('Try Balloon Breathing', 'activity-balloon'));
+                    p.appendChild(makeActivityLink(' • Try 5-4-3-2-1 Grounding', 'activity-grounding'));
+                    p.appendChild(makeExternalLink('Mindfulness videos (YouTube)', 'https://www.youtube.com/results?search_query=mindfulness+for+children'));
+                    addBotMessage(p);
+                    addBotMessage("If you want, you can save this in your journal so you can remember what helped later.");
+                    return;
+                }
+
+                // anger
+                if (containsAny(t, keywords.anger)) {
+                    addBotMessage("Anger is a strong feeling. Taking slow breaths and naming what made you angry can help calm your body.");
+                    const row = document.createElement('div'); row.style.marginTop='8px';
+                    row.appendChild(makeActivityLink('Start Balloon Breathing', 'activity-balloon'));
+                    row.appendChild(makeExternalLink('Stress-relief games', 'https://mentalhealthcenter.com/control-your-emotions-top-5-stress-relief-games/'));
+                    addBotMessage(row);
+                    return;
+                }
+
+                // worry/anxiety
+                if (containsAny(t, keywords.worry)) {
+                    addBotMessage("Worry can make your body feel tight. Naming one small worry can make it feel smaller.");
+                    const row = document.createElement('div'); row.style.marginTop='8px';
+                    row.appendChild(makeActivityLink('5-4-3-2-1 Grounding', 'activity-grounding'));
+                    row.appendChild(makeExternalLink('NHS advice for worried children', 'https://www.nhs.uk/mental-health/children-and-young-people/'));
+                    addBotMessage(row);
+                    return;
+                }
+
+                // lonely / alone
+                if (containsAny(t, keywords.alone)) {
+                    addBotMessage("Feeling alone is painful. Talking to a trusted adult or friend can help. You can also try writing how you feel in your journal.");
+                    const row = document.createElement('div'); row.style.marginTop='8px';
+                    row.appendChild(makeExternalLink('Kids Helpline', 'https://kidshelpline.com.au'));
+                    row.appendChild(makeExternalLink('The Invisible String (book info)', 'https://www.penguinrandomhouse.com/'));
+                    addBotMessage(row);
+                    return;
+                }
+
+                // tired
+                if (containsAny(t, keywords.tired)) {
+                    addBotMessage("Being very tired makes everything harder. A small rest, water, or some slow breaths could help.");
+                    const row = document.createElement('div'); row.style.marginTop='8px';
+                    row.appendChild(makeActivityLink('Balloon Breathing', 'activity-balloon'));
+                    addBotMessage(row);
+                    return;
+                }
+
+                // happy
+                if (containsAny(t, keywords.happy)) {
+                    addBotMessage("That's wonderful! I'm glad you're feeling good. What made you feel happy today? Save it in the journal so you can look back later.");
+                    return;
+                }
+
+                // general short responses
+                if (t.length < 6) {
+                    addBotMessage("Thanks for sharing — tell me a bit more if you can. You can say what happened, how it felt in your body, or what you thought about it.");
+                    return;
+                }
+
+                // fallback rich options
+                const fallback = document.createElement('div');
+                fallback.appendChild(document.createTextNode("Thanks for telling me. I can help with breathing, grounding, naming feelings, games, or links to trusted websites."));
+                const options = document.createElement('div'); options.style.marginTop='8px';
+                options.appendChild(makeActivityLink('Balloon Breathing', 'activity-balloon'));
+                options.appendChild(makeActivityLink('5-4-3-2-1 Grounding', 'activity-grounding'));
+                options.appendChild(makeExternalLink('Mindfulness videos (YouTube)', 'https://www.youtube.com/results?search_query=mindfulness+for+children'));
+                options.appendChild(makeExternalLink('Childline India (1098)', 'https://www.childlineindia.org'));
+                fallback.appendChild(options);
+                addBotMessage(fallback);
+            }
+
+            // send / save handlers
+            function handleSend(){
+                const text = inputEl.value.trim();
+                if (!text) return;
+                addUserMessage(text);
+                inputEl.value = '';
+                setTimeout(()=> generateBotReply(text), 300);
+            }
+
+            function handleSave(){
+                let text = inputEl.value.trim();
+                if (!text) {
+                    const msgs = Array.from(messagesEl.querySelectorAll('.msg.user'));
+                    if (msgs.length) text = msgs[msgs.length-1].textContent.trim();
+                }
+                if (!text) { alert('Type something to save or send a message first.'); return; }
+                const entries = loadEntries();
+                entries.push({ time: Date.now(), text: text, title: text.split('\n')[0].slice(0,80) });
+                saveEntries(entries);
+                renderEntryList();
+                alert('Saved to your journal (local to this browser).');
+            }
+
+            // export / clear
+            exportBtn.addEventListener('click', ()=>{
+                const entries = loadEntries();
+                if (!entries.length) { alert('No entries to export.'); return; }
+                const blob = new Blob([JSON.stringify(entries,null,2)], {type:'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = 'brightminds_journal.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+            });
+
+            clearBtn.addEventListener('click', ()=>{
+                if (!confirm('Clear all saved journal entries? This cannot be undone.')) return;
+                localStorage.removeItem(STORAGE_KEY); renderEntryList(); alert('All entries cleared.');
+            });
+
+            // button & keyboard bindings
+            sendBtn.addEventListener('click', handleSend);
+            saveBtn.addEventListener('click', handleSave);
+            inputEl.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } });
+
+            // initial render
+            renderEntryList();
+
+            // welcome when journal opens once per session
+            const journalSection = document.getElementById('journal');
+            const mo = new MutationObserver(muts => {
+                muts.forEach(m => {
+                    if (m.attributeName === 'class') {
+                        if (journalSection.classList.contains('active') && !sessionStorage.getItem('bm_welcomed')) {
+                            setTimeout(()=> addBotMessage("Hi! I'm here to listen. You can type how you're feeling or what's on your mind. Press 'Save Entry' to keep this in your journal."), 350);
+                            sessionStorage.setItem('bm_welcomed','1');
+                        }
+                    }
+                });
+            });
+            mo.observe(journalSection, { attributes: true });
+
+            // expose save function for internal use
+            window.__bm_saveEntry = handleSave;
+        })();
+    </script>
+</body>
+</html>
